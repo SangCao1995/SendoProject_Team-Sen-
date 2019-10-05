@@ -18,7 +18,7 @@ export default class ContentTrending extends React.Component {
             <ScrollView contentContainerStyle={styles.scrollview}>
                 <FlatList data={this.props.dataSourceTrending}
                         renderItem={({ item }) => (
-                            <ItemContentTrending item={item}/>
+                            <ItemContentTrending item={item} onPressTrendingItem={this.props.onPressTrendingItem}/>
                         )}
                         numColumns={numColumns}
                         keyExtractor={(item,index) => index.toString()}/>

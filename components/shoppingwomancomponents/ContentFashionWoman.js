@@ -17,7 +17,8 @@ export default class ContentFashionWoman extends React.Component {
             <ScrollView contentContainerStyle={styles.scrollview}>
                 <FlatList data={this.props.dataSourceFashion}
                         renderItem={({ item }) => (
-                            <ItemContentFashionWoman item={item}/>
+                            <ItemContentFashionWoman item={item} //onPressShoppingItem={this.props.onPressShoppingItem}
+                            onPressFashionItem={this.props.onPressFashionItem}/>
                         )}
                         numColumns={numColumns}
                         keyExtractor={(item,index) => index.toString()}/>

@@ -59,6 +59,7 @@ ShopStack.path = '';
 const ShoppingStack = createStackNavigator(
   {
     Shopping: ShoppingScreen,
+    ProductDetail: ProductDetailScreen,
     ShoppingWoman: ShoppingWomanScreen,
     Category: CategoryScreen
   },

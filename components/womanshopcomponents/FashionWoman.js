@@ -21,7 +21,7 @@ export default class FashionWoman extends React.Component {
                 <View style={styles.container}>
                     <FlatList data={this.props.data.slice(0, 6)}
                         renderItem={({ item }) => (
-                            <ItemFashionWoman item={item} />
+                            <ItemFashionWoman item={item} onPressItem={this.props.onPressItem}/>
                         )}
                         numColumns={numColumns}
                         keyExtractor={(item,index) => index.toString()} />

@@ -29,13 +29,11 @@ export default function ProductDetailScreen(props) {
             <View style={styles.productInfo} >
                 <Text style={styles.titleInfo}>Chi tiết sản phẩm</Text>
                 <Text style={styles.scriptInfo}>
-                Nineshop chuyên bán các sản phẩm thời trang nữ,
+                Shop chuyên bán các sản phẩm thời trang nam, thời trang nữ, giày dép,
                  đồ lót, đồ ngủ, đồ bơi,túi xách, balo các loại. 
                  Các sản phẩm đa dạng được lựa chọn tỉ mỉ, cẩn thận về kiểu dáng và mẫu mã phù hợp 
-                 với nhiều lứa tuổi phái đẹp. Nhiều mẫu thiết kế tâm huyết không những đẹp mắt, hợp thời 
-                 trang mà sản phẩm còn có nhiều tính năng tiện ích, chất liệu vải cao cấp thoải mái nhất cho người mặc.
-                  Bắt kịp xu hướng thời trang, ở nineshop có đa dạng kiểu mẫu cho các nàng lựa chọn từ những cô nàng yêu thích sự nhẹ nhàng,
-                   yêu kiều cho đến những cô nàng dễ thương, nhí nhảnh hay sexy, gợi cảm táo bạo đều có thể lựa chọn được sản phẩm ưng ý.
+                 với nhiều lứa tuổi phái đẹp. Nhiều mẫu thiết kế tâm huyết không những đẹp mắt, 
+                 hợp gu với mọi người mà sản phẩm còn có nhiều tính năng tiện ích, chất liệu cao cấp.
                 </Text>
             </View>
             <TouchableOpacity style={styles.visitShop}>

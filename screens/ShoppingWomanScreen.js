@@ -81,6 +81,9 @@ export default class ShoppingWomanScreen extends React.Component {
           .catch(error => console.log(error)) //to catch the errors if any
       }
     
+      onPressShoppingWomanItem = (item) => {
+        this.props.navigation.navigate('ProductDetail', {data: item});
+      }
     render() {
         //const isOnPress = this.props.navigation.getParam('isOnPress');
         //console.log(isOnPress);
@@ -112,7 +115,8 @@ export default class ShoppingWomanScreen extends React.Component {
         }
         return(
             <View style={styles.container}>
-                <Shopping isOnPressWomanRecommend={isOnPressRecommend}
+                <Shopping onPressShoppingWomanItem={this.onPressShoppingWomanItem}
+                isOnPressWomanRecommend={isOnPressRecommend}
                 isOnPressWomanFashion={isOnPressFashion}
                 isOnPressWomanTrending={isOnPressTrending}
                 onPressButton={this.props.onPressButtonCategoryWoman}

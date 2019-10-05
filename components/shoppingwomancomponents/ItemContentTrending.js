@@ -4,7 +4,7 @@ import {TouchableOpacity, Image, StyleSheet, Text} from 'react-native';
 export default function 
 ItemContentTrending(props) {
     return(
-        <TouchableOpacity style={styles.itemContentFashionWomanWrapper}>
+        <TouchableOpacity style={styles.itemContentFashionWomanWrapper} onPress={() => props.onPressTrendingItem(props.item)}>
             <Image style={styles.image} source={{uri: props.item.image_url}}/>
             <Text style={styles.productNameText} numberOfLines={2}>{props.item.name}</Text>
             <Text style={styles.priceText}>{props.item.price}</Text>

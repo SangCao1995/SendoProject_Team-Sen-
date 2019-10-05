@@ -50,6 +50,10 @@ export default class ShoppingScreen extends React.Component {
             })
             .catch(error => console.log(error)) //to catch the errors if any
     }
+
+    onPressShoppingWomanItem = (item) => {
+        this.props.navigation.navigate('ProductDetail', {data: item});
+    }
     render() {
         //const data = this.props.navigation.getParam('gender');
         const isOnPressRecommend = this.props.navigation.getParam('isOnPressRecommend');
@@ -78,7 +82,7 @@ export default class ShoppingScreen extends React.Component {
         }
         return (
             <View>
-                <ContentFashionWoman dataSourceFashion={this.state.dataSource}/>
+                <ContentFashionWoman dataSourceFashion={this.state.dataSource} onPressFashionItem={this.onPressShoppingWomanItem}/>
             </View>
         )
     }

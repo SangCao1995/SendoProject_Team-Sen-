@@ -18,7 +18,7 @@ export default class ShopWomanScreen extends React.Component {
                 <Banner data={this.props.dataSource} onPressButton={this.props.onPressFashion}/>
                 <Recommend data={this.props.dataSource1} onPressButton={this.props.onPressRecommend} onPressItem={this.props.onPressItem}/>
                 <ProductForYou data={this.props.dataSource2} onPressButton={this.props.onPressCategory}/>
-                <FashionWoman data={this.props.dataSource3} onPressButton={this.props.onPressTrending}/>
+                <FashionWoman data={this.props.dataSource3} onPressButton={this.props.onPressTrending} onPressItem={this.props.onPressItem}/>
             </ScrollView>
             
         );

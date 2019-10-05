@@ -106,7 +106,7 @@ export default class Shopping extends React.Component {
         isRecommendButton = true;
         if (isRecommendButton === true) {
             this.setState({
-                content: <ContentRecommend dataSourceRecommend={this.props.dataSourceRecommend}/>,
+                content: <ContentRecommend dataSourceRecommend={this.props.dataSourceRecommend} onPressRecommendItem={this.props.onPressShoppingWomanItem}/>,
             })
         } 
     }
@@ -116,7 +116,7 @@ export default class Shopping extends React.Component {
         isFashionButton = true;
         if (isFashionButton === true) {
             this.setState({
-                content: <ContentFashionWoman dataSourceFashion={this.props.dataSourceFashion}/>
+                content: <ContentFashionWoman dataSourceFashion={this.props.dataSourceFashion} onPressFashionItem={this.props.onPressShoppingWomanItem}/>
             })
         } 
     }
@@ -124,7 +124,7 @@ export default class Shopping extends React.Component {
         isTrendingButton = true;
         if (isTrendingButton === true) {
             this.setState({
-                content: <ContentTrending dataSourceTrending={this.props.dataSourceTrending}/>
+                content: <ContentTrending dataSourceTrending={this.props.dataSourceTrending} onPressTrendingItem={this.props.onPressShoppingWomanItem}/>
             })
         } 
     }
@@ -190,7 +190,7 @@ export default class Shopping extends React.Component {
                     <ScrollView contentContainerStyle={styles.scrollview} horizontal={true}>
                         <TouchableOpacity style={styles.recommendButton} onPress={() => this.onRecommendButton()}>
                             <Image style={styles.recommendImage}
-                                source={{ uri: 'https://s3-alpha-sig.figma.com/img/75c6/f492/f743ca1780003e0cf0e0bf2740583c1f?Expires=1568592000&Signature=cWkRLCJPHlxryACgxUB1WQ3krttJ-Z5W-nHgOUAqxWslBPvbsOJefyDzXv0Cv-gLJaLITygeDuZW1eos~uMZKOQ3~-kihnODpKs7r-abJ9pzkoeA5q52g4f9A4o1JPLlwr~vMf2G8W225p0rnUfRF90whttrkZptSVkQ2-RW8J6rdWP9GpS8EJQAZOkbhOaUH-M5dK5i~R3mreiFMVAACW7gDappSKzcTL6UdPJESgyT~sKawXnjGwtjMmlspsqhNYm8YhVeSyiQB70JXvhkDFbCqAOx28i6mwN5JK~at~dv0lRFlOkGCnHxqjZ24~WTGkWVIe5s8jhh~WK4t7RJHw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA' }} />
+                                source={require('../../assets/images/common_category_reccomend.jpg')} />
                             <Text style={styles.RecommendText}>Đề cử</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.shoppingButton} onPress={() => this.onShoppingButton()}>

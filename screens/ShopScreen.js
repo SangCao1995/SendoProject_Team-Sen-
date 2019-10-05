@@ -115,6 +115,10 @@ export default class ShopScreen extends React.Component {
     this.props.navigation.navigate('ProductDetail', {data: item});
   }
     
+  onPressShoppingWomanItem = (item) => {
+    this.props.navigation.navigate('ProductDetail', {data: item});
+  }
+
     render() {
       //const data = this.props.navigation.getParam('data');
       // const dataSource = this.state.dataSource;
@@ -139,7 +143,7 @@ export default class ShopScreen extends React.Component {
         //   //isOnPressFashion: true
         // })
         await this.setState({
-          content: <ContentRecommend dataSourceRecommend={this.state.dataSource1}/>
+          content: <ContentRecommend dataSourceRecommend={this.state.dataSource1} onPressRecommendItem={this.onPressShoppingWomanItem}/>
           //content: <Text>Hello</Text>
         })
         //console.log(this.state.isOnPressRecommend);
@@ -168,7 +172,7 @@ export default class ShopScreen extends React.Component {
         //isOnPress = true;
         if (this.state.isOnPressFashion === true) {
           await this.setState({
-            content: <ContentFashionWoman dataSourceFashion={this.state.dataSource}/>
+            content: <ContentFashionWoman dataSourceFashion={this.state.dataSource} onPressFashionItem={this.onPressShoppingWomanItem}/>
             //content: <Text>Hello</Text>
           })
         }
@@ -192,7 +196,7 @@ export default class ShopScreen extends React.Component {
         //   isOnPressTrending: true
         // })
         await this.setState({
-          content: <ContentTrending dataSourceTrending={this.state.dataSource3}/>
+          content: <ContentTrending dataSourceTrending={this.state.dataSource3} onPressTrendingItem={this.onPressShoppingWomanItem}/>
           //content: <Text>Hello</Text>
         })
         //this.props.navigation.navigate('ShoppingStack');

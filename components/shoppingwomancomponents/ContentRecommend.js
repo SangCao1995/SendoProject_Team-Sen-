@@ -19,7 +19,7 @@ export default class ContentRecommend extends React.Component {
             <ScrollView contentContainerStyle={styles.scrollview}>
                 <FlatList data={this.props.dataSourceRecommend}
                         renderItem={({ item }) => (
-                            <ItemContentRecommend item={item}/>
+                            <ItemContentRecommend item={item} onPressRecommendItem={this.props.onPressRecommendItem}/>
                         )}
                         numColumns={numColumns}
                         keyExtractor={(item,index) => index.toString()}/>

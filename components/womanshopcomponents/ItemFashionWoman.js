@@ -3,7 +3,7 @@ import {TouchableOpacity, StyleSheet, Image} from 'react-native';
 
 export default function ItemFashionWoman(props) {
     return(
-        <TouchableOpacity style={styles.itemFashionWoman}>
+        <TouchableOpacity style={styles.itemFashionWoman} onPress={() => props.onPressItem(props.item)}>
             <Image source={{uri: props.item.image_url}}
                 style={styles.image}/>
         </TouchableOpacity>
