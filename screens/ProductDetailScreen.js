@@ -53,11 +53,7 @@ export default function ProductDetailScreen(props) {
 
 ProductDetailScreen.navigationOptions = props => {
     return{
-        headerTitle: (
-            <View style={styles.headerTitle}>
-                <LogoTitle/>
-            </View>
-        ),
+        headerTitle: "Product Detail",
         headerBackground: (
             <Image
               style={{width: '100%', height: '100%'}}

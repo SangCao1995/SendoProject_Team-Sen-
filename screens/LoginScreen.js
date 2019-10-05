@@ -1,9 +1,11 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, View, Image, Alert, AsyncStorage, TextInput, Button } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, View, Image, Alert, AsyncStorage, TextInput, Button, ImageBackground, Keyboard, TouchableWithoutFeedback, SafeAreaView } from 'react-native';
 import * as Facebook from 'expo-facebook';
 import Expo from 'expo';
 import * as Google from 'expo-google-app-auth';
 import ProfileScreen from './ProfileScreen';
+import * as action from '../action/index';
+import {connect} from 'react-redux';
 
 //import * as firebase from 'firebase';
 
@@ -74,9 +76,18 @@ export default class LoginScreen extends React.Component {
         //response.then(userInfo => console.log(userInfo));
         this.state.userInfo = await response.json();
         //console.log(this.state.userInfo);
-        this.setState({
-          userInfo: this.state.userInfo
-        });
+        
+        // this.setState({
+        //   userInfo: this.state.userInfo
+        // });
+
+        this.successLogin = (info) => {
+          this.setState({
+            userInfo: info
+          })
+          this.props.SaveInfoToState(info);
+        } 
+      
         await AsyncStorage.setItem('@token', token);
         this.props.navigation.navigate("Main");
         Alert.alert('Logged in!', `Hi ${this.state.userInfo.name}!`);
@@ -152,56 +163,86 @@ export default class LoginScreen extends React.Component {
     
     console.log(this.state.email);
   }
+  
   render() {
     return (
-      <View style={styles.container}>
-        {/* {!this.state.userInfo ? (<TouchableOpacity style={styles.button}
-            onPress={() => this.onPressButton()}>
-                <Text>Login Facebook</Text>
-            </TouchableOpacity>) : (this.renderUserInfo())} */}
-        <Text style={styles.title}>Đăng nhập vào Sendo</Text>
-        <TextInput
-          style={styles.textInput}
-          autoCapitalize="none"
-          placeholder="User ID"
-          onChangeText={email => this.setState({ email })}
-          value={this.state.email}
-        />
-        <TextInput
-          secureTextEntry
-          style={styles.textInput}
-          autoCapitalize="none"
-          placeholder="Password"
-          onChangeText={password => this.setState({ password })}
-          value={this.state.password}
-        />
-        <TouchableOpacity style={styles.loginButton} onPress={() => this.onPressLoginButton()}>
-          <Text style={styles.loginText}>Đăng nhập</Text>
-        </TouchableOpacity>
-        <Text style={styles.text}>Hoặc đăng nhập bằng</Text>
-        <View style={styles.loginFacebookGoogleWrapper}>
-          <TouchableOpacity style={styles.facebookButton} onPress={() => this.onFacebookLoginPress()}>
-            <Image style={styles.facebookIcon}
-            source={require('../assets/images/facebook_icon.jpg')}/>
-            <Text style={styles.facebookText}>Facebook</Text>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <ImageBackground style={styles.container}
+          source={{ uri: 'https://freight.cargo.site/t/original/i/efe67902d714b207fe589431caf1d637e0e3471393198167fe34a986e8e40de7/red-products-isometric.png' }}
+        >
+          <Text style={styles.title}>Ⓢ Ⓔ Ⓝ Ⓓ Ⓞ</Text>
+          <View style={{ flexDirection: 'row' }}>
+            <Image source={{ uri: 'https://img.icons8.com/windows/32/000000/lock-2.png' }} />
+            <TextInput
+              style={styles.textInput}
+              autoCapitalize="none"
+              placeholder="User ID"
+              onChangeText={email => this.setState({ email })}
+              value={this.state.email}
+            />
+          </View>
+
+          <TextInput
+            secureTextEntry
+            style={styles.textInput}
+            autoCapitalize="none"
+            placeholder="Password"
+            onChangeText={password => this.setState({ password })}
+            value={this.state.password}
+          />
+          <TouchableOpacity style={styles.loginButton} onPress={() => this.onPressLoginButton()}>
+            <Text style={styles.loginText}>Login</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.googleButton} onPress={() => this.onGoogleLoginPress()}>
-            <Image style={styles.googleIcon}
-            source={require('../assets/images/google_icon.png')}/>
-            <Text style={styles.googleText}>Google</Text>
+          <Text style={styles.text}>OR</Text>
+          <View style={styles.loginFacebookGoogleWrapper}>
+            <TouchableOpacity style={styles.facebookButton} onPress={() => this.onFacebookLoginPress()}>
+              <Image style={styles.facebookIcon}
+                source={require('../assets/images/facebook_icon.jpg')} />
+              <Text style={styles.facebookText}>Facebook</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.googleButton} onPress={() => this.onGoogleLoginPress()}>
+              <Image style={styles.googleIcon}
+                source={require('../assets/images/google_icon.png')} />
+              <Text style={styles.googleText}>Google</Text>
+            </TouchableOpacity>
+
+          </View>
+          <TouchableOpacity>
+            <Text style={{ color: '#bae3e3', marginLeft: 20 }}>Forgot password?</Text>
           </TouchableOpacity>
-        </View>
-      </View>
+          <View style={{ flexDirection: 'row', marginTop: 10, borderTopWidth: 1, borderTopColor: 'white' }}>
+            <Text style={{ color: 'white' }}>Not on Sendo yet?</Text>
+            <TouchableOpacity>
+              <Text style={{ color: '#bae3e3', marginLeft: 10 }}>Sign Up</Text>
+            </TouchableOpacity>
+          </View>
+        </ImageBackground>
+      </TouchableWithoutFeedback>
     );
   }
 }
 
+const mapStateToProps = state => {
+  return{
+    infoUser: state.infoReducer
+  }
+}
+
+const mapDispatchToProps = function(dispatch) {
+  return {
+    SaveInfoToState: (info) => {
+      dispatch(action.ActionName(info));
+    }
+  }
+}
+
+//export default connect(mapStateToProps,mapDispatchToProps)(LoginScreen);
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
-    backgroundColor: 'red'
+    //backgroundColor: 'red'
   },
   title: {
     color: 'white',
@@ -214,20 +255,21 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     marginTop: 8,
     padding: 8,
-    borderRadius: 10
+    borderRadius: 50
   },
   loginButton: {
     marginTop: 8,
     width: 320,
-    backgroundColor: 'yellow',
+    backgroundColor: '#00b5ec',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 3,
+    borderRadius: 30,
     height: 50
   },
   loginText: {
     padding: 8,
     fontSize: 15,
+    color:'white',
     fontWeight: 'bold',
   },
   facebookButton: {
@@ -236,7 +278,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#3b5998',
     borderColor: 'gray',
     borderWidth: 1,
-    borderRadius: 5
+    borderRadius: 5,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 11,
+    },
+    shadowOpacity: 0.57,
+    shadowRadius: 15.19,
+
+    elevation: 23,
   },
   facebookIcon: {
     width: 20,
@@ -255,7 +306,16 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 1,
     borderRadius: 5,
-    marginLeft: 20
+    marginLeft: 20,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 11,
+    },
+    shadowOpacity: 0.57,
+    shadowRadius: 15.19,
+
+    elevation: 23,
   },
   googleIcon: {
     width: 20,

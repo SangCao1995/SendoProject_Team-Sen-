@@ -5,13 +5,15 @@ import ShoppingWomanScreen from './ShoppingWomanScreen';
 import Shopping from '../components/shoppingwomancomponents/Shopping';
 import LogoTitle from '../components/LogoTitle';
 import ContentFashionWoman from '../components/shoppingwomancomponents/ContentFashionWoman';
+import { SearchBar } from 'react-native-elements';
 
 export default class ShoppingScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             dataSource: [],
-            loading: true
+            loading: true,
+            search: ''
         }
     }
     onPressButtonCategoryWomanTotal = () => {
@@ -44,12 +46,33 @@ export default class ShoppingScreen extends React.Component {
                 loading: false,
                 dataSource: shuffle(responseJson)
               },
+              function () {
+                this.arrayholder = responseJson;
+              },
               console.log("test"),
               console.log(this.state.dataSource),
               console.warn(this.state.dataSource))
             })
             .catch(error => console.log(error)) //to catch the errors if any
     }
+
+    search = text => {
+        console.log(text);
+      };
+      clear = () => {
+        this.search.clear();
+      };
+      SearchFilterFunction(text) {
+        const newData = this.arrayholder.filter(function (item) {
+          const itemData = item.name ? item.name.toUpperCase() : ''.toUpperCase();
+          const textData = text.toUpperCase();
+          return itemData.indexOf(textData) > -1;
+        });
+        this.setState({
+          dataSource: newData,
+          search: text,
+        });
+      }
 
     onPressShoppingWomanItem = (item) => {
         this.props.navigation.navigate('ProductDetail', {data: item});
@@ -82,6 +105,14 @@ export default class ShoppingScreen extends React.Component {
         }
         return (
             <View>
+                <SearchBar
+                    round
+                    searchIcon={{ size: 24 }}
+                    onChangeText={text => this.SearchFilterFunction(text)}
+                    onClear={text => this.SearchFilterFunction('')}
+                    placeholder="Looking for ..."
+                    value={this.state.search}
+                />
                 <ContentFashionWoman dataSourceFashion={this.state.dataSource} onPressFashionItem={this.onPressShoppingWomanItem}/>
             </View>
         )

@@ -180,7 +180,7 @@ export default class Shopping extends React.Component {
             <View style={styles.shoppingWrapper}>
                 <View style={styles.view1}> 
                     <View style={styles.shoppingTop}>
-                        <Text style={styles.shoppingText}>Dạo chợ Sen Đỏ</Text>
+                        <Text style={styles.shoppingText}>Dạo siêu chợ</Text>
                         <TouchableOpacity style={styles.allCategoryButton} onPress={this.props.onCategoryButton}>
                             <Text style={styles.allCategoryText}>Tất cả danh mục</Text>
                             <AntDesign name="right" style={styles.icon} color='#D90429' />

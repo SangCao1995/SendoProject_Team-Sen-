@@ -248,7 +248,7 @@ ShopScreen.navigationOptions = props => {
       headerRight: (
         <View style={styles.headerRight}>
             <TouchableOpacity style={styles.searchButton}>
-              <FontAwesome style={styles.icon} name="search" size={23}/>
+              <FontAwesome style={styles.icon} name="search" size={23} color="red"/>
             </TouchableOpacity>
             <TextInput style={styles.textInput} placeholder="Tìm kiếm tại Sendo"/>
         </View>
@@ -298,6 +298,7 @@ ShopScreen.navigationOptions = props => {
         backgroundColor: '#fff',
         color: '#424242',
         width: 160,
+        borderRadius: 15
       },
       headerRight: {
         flex: 1,
@@ -305,7 +306,8 @@ ShopScreen.navigationOptions = props => {
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#fff',
-        marginRight: 10
+        marginRight: 10,
+        borderRadius: 15
       },
       searchButton: {
         marginRight: 5

@@ -18,6 +18,8 @@ import NewsScreen from '../screens/NewsScreen';
 import TabBarIcon3 from '../components/TabBarIcon3';
 import TabBarIcon4 from '../components/TabBarIcon4';
 import ProductDetailScreen from '../screens/ProductDetailScreen';
+import AboutUsScreen from '../screens/AboutUsScreen';
+import ContactUsScreen from '../screens/ContactUsScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -122,6 +124,8 @@ NewsStack.path = '';
 const ProfileStack = createStackNavigator(
   {
     Profile: ProfileScreen,
+    AboutUs: AboutUsScreen,
+    ContactUs: ContactUsScreen
   },
   config
 );

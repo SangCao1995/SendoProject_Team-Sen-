@@ -112,7 +112,8 @@ const styles = StyleSheet.create({
         fontSize: 14,
         lineHeight: 16,
         fontFamily: 'Roboto',
-        color: 'red'
+        color: 'red',
+        fontWeight: 'bold'
     },
     icon: {
         marginLeft: 240
