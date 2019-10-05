@@ -39,7 +39,7 @@ export default class Recommend extends React.Component {
                     //keyExtractor={(item, index) => item.key }
                     renderItem={({ item }) => {
                         return(
-                            <ItemRecommend item={item} onPressItem={this.props.onPressItem} />
+                            <ItemRecommend item={item} onPressItem={this.props.onPressItem}/>
                             // <Image style={{width: 50, height: 50}} source={{uri: item.belong_cate_lvl1_image}}/>
                         );
                     }}

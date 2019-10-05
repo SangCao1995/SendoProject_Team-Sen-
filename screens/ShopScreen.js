@@ -108,9 +108,11 @@ export default class ShopScreen extends React.Component {
       .catch(error => console.log(error)) //to catch the errors if any
   }
 
-  onPressItem = () => {
-    alert("Hell");
-    this.props.navigation.navigate('ProductDetail');
+  onPressItem = (item) => {
+    //alert("Hell");
+    // console.log("item");
+    // console.log(item);
+    this.props.navigation.navigate('ProductDetail', {data: item});
   }
     
     render() {
@@ -220,7 +222,7 @@ export default class ShopScreen extends React.Component {
       // }
       return (
         <View>
-          <ShopWomanScreen onPressItem={() => this.onPressItem()}
+          <ShopWomanScreen onPressItem={this.onPressItem}
           dataSource={this.state.dataSource} 
           dataSource1={this.state.dataSource1}
           dataSource2={this.state.dataSource2}

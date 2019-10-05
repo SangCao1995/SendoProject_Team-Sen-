@@ -26,7 +26,7 @@ export default class ColorOption extends Component {
 
         <NumericInput
           minValue = {0}
-          value={this.state.valuee}
+          //value={this.state.valuee}
           onChange={valuee => this.setState({ valuee })}
           totalWidth={100}
           totalHeight={50}

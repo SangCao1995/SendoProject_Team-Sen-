@@ -2,8 +2,10 @@ import React from 'react';
 import {TouchableOpacity, View, Text, StyleSheet, Image} from 'react-native';
 
 export default function ItemRecommend(props) {
+    // console.log("item");
+    // console.log(props.item);
     return(
-        <TouchableOpacity style={styles.itemWrapper} onPress={props.onPressItem}>
+        <TouchableOpacity style={styles.itemWrapper} onPress={() => props.onPressItem(props.item)}>
             <Image source={{uri: props.item.image_url}} style={styles.image}/>
             <View style={styles.textWrapper}>
                 <Text style={styles.price}>{props.item.price}</Text>

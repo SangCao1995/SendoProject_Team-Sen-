@@ -1,21 +1,25 @@
 import React from 'react';
 import { Text, View, Image, StyleSheet,TouchableOpacity,Picker, ScrollView } from 'react-native';
 import ColorOption from '../components/ColorOption';
+import LogoTitle from '../components/LogoTitle';
 
 
 export default function ProductDetailScreen(props) {
+    const data = props.navigation.getParam('data');
+    console.log("data");
+    console.log(data);
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <View style={styles.imageView}>
                 <Image
                     style={styles.imageDetail}
-                    source={{ uri: 'https://file.yes24.vn/Upload/ProductImage/minhchau2017/1837023_L.png' }}
+                    source={{ uri: data.image_url }}
                 />
             </View>
 
             <View style={styles.titleView}>
-                <Text style={styles.textTitle}>Đầm DL10078-2</Text>
-                <Text style={styles.textPrice}>19.000 VND</Text>
+                <Text style={styles.textTitle}>{data.name}</Text>
+                <Text style={styles.textPrice}>{data.price}</Text>
             </View>
 
             <View style={styles.colorOption}>
@@ -40,13 +44,30 @@ export default function ProductDetailScreen(props) {
                     source={{ uri: 'https://miro.medium.com/max/2400/0*Q_OW5YQ2ZfxZLn6H.png' }}
                 />
                 <View  style={styles.infoShop}>
-                    <Text style={styles.nameShop}>Uniqlo Vietnam</Text>
+                    <Text style={styles.nameShop}>{data.shop_name}</Text>
                     <Text style={styles.localShop}>TP. Ho Chi Minh</Text>
                 </View>
  
             </TouchableOpacity>
         </ScrollView>
     );
+}
+
+ProductDetailScreen.navigationOptions = props => {
+    return{
+        headerTitle: (
+            <View style={styles.headerTitle}>
+                <LogoTitle/>
+            </View>
+        ),
+        headerBackground: (
+            <Image
+              style={{width: '100%', height: '100%'}}
+              source={{uri: 'https://img.freepik.com/free-psd/abstract-background-design_1297-82.jpg?size=626&ext=jpg'}}
+            />
+        ),
+        headerTintColor: 'white',
+    }
 }
 const styles = StyleSheet.create({
     container: {
@@ -150,6 +171,11 @@ const styles = StyleSheet.create({
         fontWeight: 'normal',
         fontSize:11,
         lineHeight:11
-    }
-    
+    },
+    headerTitle: {
+        //marginLeft: 90
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: 1
+    },
 })
