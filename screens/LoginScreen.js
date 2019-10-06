@@ -5,7 +5,7 @@ import Expo from 'expo';
 import * as Google from 'expo-google-app-auth';
 import ProfileScreen from './ProfileScreen';
 import * as action from '../action/index';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 //import * as firebase from 'firebase';
 
@@ -22,7 +22,7 @@ export default class LoginScreen extends React.Component {
     }
   }
 
-  
+
 
   onLoginPress() {
 
@@ -57,11 +57,13 @@ export default class LoginScreen extends React.Component {
 
   }
   successLogin = (info) => {
+    alert("Hello");
     this.setState({
       userInfo: info
     })
     this.props.SaveInfoToState(info);
-  } 
+    console.log("info login screen:", info);
+  }
   onFacebookLoginPress = async () => {
     try {
       const {
@@ -81,14 +83,16 @@ export default class LoginScreen extends React.Component {
         //.then(r => r.json());
         //response.then(userInfo => console.log(userInfo));
         this.state.userInfo = await response.json();
+        console.log("login fb here: ", this.state.userInfo)
+        this.props.SaveInfoToState(this.state.userInfo);
         //console.log(this.state.userInfo);
-        
+
         // this.setState({
         //   userInfo: this.state.userInfo
         // });
+        //this.successLogin();
 
-        
-      
+
         await AsyncStorage.setItem('@token', token);
         this.props.navigation.navigate("Main");
         Alert.alert('Logged in!', `Hi ${this.state.userInfo.name}!`);
@@ -103,7 +107,7 @@ export default class LoginScreen extends React.Component {
   onGoogleLoginPress = async () => {
     //alert("hi");
     try {
-      const {type, accessToken, user} = await Google.logInAsync({
+      const { type, accessToken, user } = await Google.logInAsync({
         androidClientId: `76641770158-66ur9cr372lnembbfmepf5hsldd92fgh.apps.googleusercontent.com`,
         scopes: ['profile', 'email'],
       });
@@ -132,23 +136,23 @@ export default class LoginScreen extends React.Component {
   //         </View>
   //     );
   // }
-  
+
   onPressLoginButton = async () => {
     var flag = false;
     const response = await fetch(`https://raw.githubusercontent.com/emonno13/jsontest/master/users.json?fbclid=IwAR2hv8OVpogcBa42FejsP1UIjTmgyXkSRLxEmjjB-xV7TmM1ftZXjAPCews`);
     const jsonData = await response.json();
     // = jsonData;
     console.log(jsonData[500].user_id);
-    for(var i = 0; i < jsonData.length; i++) {
-      if(this.state.email === jsonData[i].user_id && this.state.password === '123456') {
+    for (var i = 0; i < jsonData.length; i++) {
+      if (this.state.email === jsonData[i].user_id && this.state.password === '123456') {
         flag = true;
       }
     }
-    if(flag === true) {
+    if (flag === true) {
       console.log("Success");
       await AsyncStorage.setItem('@token', '69');
       this.props.navigation.navigate('Main');
-      
+
     }
     else {
       console.log("Failed");
@@ -161,10 +165,10 @@ export default class LoginScreen extends React.Component {
     //     console.log("Failed");
     //   }
     // })
-    
+
     console.log(this.state.email);
   }
-  
+
   render() {
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -224,12 +228,12 @@ export default class LoginScreen extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return{
+  return {
     infoUser: state.infoReducer
   }
 }
 
-const mapDispatchToProps = function(dispatch) {
+const mapDispatchToProps = function (dispatch) {
   return {
     SaveInfoToState: (info) => {
       dispatch(action.ActionName(info));
@@ -237,7 +241,7 @@ const mapDispatchToProps = function(dispatch) {
   }
 }
 
-//export default connect(mapStateToProps,mapDispatchToProps)(LoginScreen);
+//export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
@@ -270,7 +274,7 @@ const styles = StyleSheet.create({
   loginText: {
     padding: 8,
     fontSize: 15,
-    color:'white',
+    color: 'white',
     fontWeight: 'bold',
   },
   facebookButton: {

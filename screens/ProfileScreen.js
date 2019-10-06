@@ -31,6 +31,8 @@ export default class ProfileScreen extends React.Component {
         this.props.navigation.navigate('ContactUs');
     }
     componentWillMount() {
+        
+        console.log("i got info here: ", this.props.infoUser)
         if (Platform.OS === 'android' && !Constants.isDevice) {
           this.setState({
             errorMessage: 'Try it on your real device!',
@@ -56,6 +58,7 @@ export default class ProfileScreen extends React.Component {
         const data = this.props.navigation.getParam('increaseCount');
         //const name = this.props.navigation.getParam('userID', 'Peter');
         //console.log(data);
+        
         let text = 'Waiting..';
         if (this.state.errorMessage) {
             text = this.state.errorMessage;
@@ -82,7 +85,7 @@ export default class ProfileScreen extends React.Component {
                     </View>
                     <View style={styles.userNameAccountWrapper}>
                         <Text style={styles.userNameAccount}>Name</Text>
-                        <Text>{this.props.infoReducer}</Text>
+                        <Text>Sang Cao</Text>
                     </View>
                     <View style={styles.phoneWrapper}>
                         <Text style={styles.phone}>Phone</Text>
