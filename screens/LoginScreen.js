@@ -84,12 +84,12 @@ export default class LoginScreen extends React.Component {
         //response.then(userInfo => console.log(userInfo));
         this.state.userInfo = await response.json();
         console.log("login fb here: ", this.state.userInfo)
-        this.props.SaveInfoToState(this.state.userInfo);
+        //this.props.SaveInfoToState(this.state.userInfo);
         //console.log(this.state.userInfo);
 
-        // this.setState({
-        //   userInfo: this.state.userInfo
-        // });
+        this.setState({
+          userInfo: this.state.userInfo
+        });
         //this.successLogin();
 
 
