@@ -11,6 +11,7 @@ import LogoTitle from '../components/LogoTitle';
 import ContentRecommend from '../components/shoppingwomancomponents/ContentRecommend';
 import ContentFashionWoman from '../components/shoppingwomancomponents/ContentFashionWoman';
 import ContentTrending from '../components/shoppingwomancomponents/ContentTrending';
+import BackgroundCarousel from '../components/BackgroundCarousel';
 
 const resetAction = StackActions.reset({
   index: 0,
@@ -225,16 +226,20 @@ export default class ShopScreen extends React.Component {
       //   onPressFashion={() => onPressFashionTotal()}/>)
       // }
       return (
-        <View>
-          <ShopWomanScreen onPressItem={this.onPressItem}
-          dataSource={this.state.dataSource} 
-          dataSource1={this.state.dataSource1}
-          dataSource2={this.state.dataSource2}
-          dataSource3={this.state.dataSource3}
-          onPressRecommend={() => onPressRecommendTotal()}
-          onPressFashion={() => onPressFashionTotal()}
-          onPressTrending={() => onPressTrendingTotal()}
-          onPressCategory={() => onPressCategoryTotal()}/>
+        <View style={styles.container}>
+          <BackgroundCarousel style={styles.view1}/>
+          <ShopWomanScreen style={styles.view2}
+            onPressItem={this.onPressItem}
+            dataSource={this.state.dataSource}
+            dataSource1={this.state.dataSource1}
+            dataSource2={this.state.dataSource2}
+            dataSource3={this.state.dataSource3}
+            onPressRecommend={() => onPressRecommendTotal()}
+            onPressFashion={() => onPressFashionTotal()}
+            onPressTrending={() => onPressTrendingTotal()}
+            onPressCategory={() => onPressCategoryTotal()} />
+          
+          
         </View>
       )
     }
@@ -283,8 +288,13 @@ ShopScreen.navigationOptions = props => {
           //backgroundColor: 'white'
       },
       container: {
-        flexDirection: 'row',
-        marginRight: 10
+        flex: 1,
+      },
+      view1: {
+        flex: 0.3,
+      },
+      view2: {
+        flex: 0.7
       },
     //   button: {
     //       marginRight: 10

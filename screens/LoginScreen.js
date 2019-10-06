@@ -56,6 +56,12 @@ export default class LoginScreen extends React.Component {
     </View>
 
   }
+  successLogin = (info) => {
+    this.setState({
+      userInfo: info
+    })
+    this.props.SaveInfoToState(info);
+  } 
   onFacebookLoginPress = async () => {
     try {
       const {
@@ -81,12 +87,7 @@ export default class LoginScreen extends React.Component {
         //   userInfo: this.state.userInfo
         // });
 
-        this.successLogin = (info) => {
-          this.setState({
-            userInfo: info
-          })
-          this.props.SaveInfoToState(info);
-        } 
+        
       
         await AsyncStorage.setItem('@token', token);
         this.props.navigation.navigate("Main");

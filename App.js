@@ -6,14 +6,15 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import AppNavigator from './navigation/AppNavigator';
-import {createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
+import {createStore} from 'redux';
+import {reducer} from './reducer/index';
 
 
 
 
 //let store = createStore(combineReducers({test: counter}))
-
+//const store = createStore(reducer);
 export default class App extends React.Component {
   // const [isLoadingComplete, setLoadingComplete] = useState(false);
   // // if(isSplash === true) {
@@ -34,7 +35,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         {/* {Platform.OS === 'ios' && <StatusBar barStyle="default" />} */}
-        <AppNavigator />
+        <AppNavigator/>
       </View>
     );
   }

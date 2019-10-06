@@ -1,11 +1,12 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, AsyncStorage, StyleSheet, Image, Platform} from 'react-native';
-import {connect} from 'react-redux';
 import LogoTitle from '../components/LogoTitle';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import Constants from 'expo-constants';
 import {AntDesign} from '@expo/vector-icons';
+import * as action from '../action/index';
+import {connect} from 'react-redux';
 
 
 
@@ -81,7 +82,7 @@ export default class ProfileScreen extends React.Component {
                     </View>
                     <View style={styles.userNameAccountWrapper}>
                         <Text style={styles.userNameAccount}>Name</Text>
-                        <Text>Sang Cao</Text>
+                        <Text>{this.props.infoReducer}</Text>
                     </View>
                     <View style={styles.phoneWrapper}>
                         <Text style={styles.phone}>Phone</Text>
@@ -126,6 +127,13 @@ ProfileScreen.navigationOptions = props => {
           ),
     }
 }
+const mapStateToProps = state => {
+    return{
+      infoUser: state.infoReducer
+    }
+  }
+
+//export default connect(mapStateToProps)(ProfileScreen);
 
 const styles = StyleSheet.create({
     container: {

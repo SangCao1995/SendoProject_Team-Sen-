@@ -27,6 +27,6 @@ export default class ShopWomanScreen extends React.Component {
 
 const styles = StyleSheet.create({
     scrollview: {
-        backgroundColor: '#F2F2F2'
+        backgroundColor: '#F2F2F2',
     }
 })

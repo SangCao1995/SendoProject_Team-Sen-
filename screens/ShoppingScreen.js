@@ -104,7 +104,7 @@ export default class ShoppingScreen extends React.Component {
               )
         }
         return (
-            <View>
+            <View style={styles.container}>
                 <SearchBar
                     round
                     searchIcon={{ size: 24 }}
@@ -121,9 +121,9 @@ export default class ShoppingScreen extends React.Component {
 
 ShoppingScreen.navigationOptions = props => {
     return{
-        headerTitle: (
+        header: (
             <View style={styles.headerTitle}>
-                <LogoTitle/>
+                
             </View>
         ),
         headerBackground: (
@@ -142,9 +142,7 @@ const styles = StyleSheet.create({
     },
     headerTitle: {
         //marginLeft: 90
-        justifyContent: 'center',
-        alignItems: 'center',
-        flex: 1
+        marginTop: 24
     },
     loading: { 
         flex: 1,

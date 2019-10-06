@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Image, StyleSheet,TouchableOpacity,Picker, ScrollView } from 'react-native';
+import { Text, View, Image, StyleSheet,TouchableOpacity,Picker, ScrollView, ImageBackground } from 'react-native';
 import ColorOption from '../components/ColorOption';
 import LogoTitle from '../components/LogoTitle';
 
@@ -47,6 +47,26 @@ export default function ProductDetailScreen(props) {
                 </View>
  
             </TouchableOpacity>
+            <View style={styles.footer} >
+                    <TouchableOpacity onPress={()=>alert('Đã thêm vào giỏ hàng')}>
+                        <ImageBackground 
+                            source={{
+                            uri:'http://www.clker.com/cliparts/h/4/P/y/n/z/orange-rectangle-button-md.png'}} 
+                            style={styles.buttonFooter}
+                            >
+                            <Text style={styles.textFooter}>THÊM VÀO GIỎ HÀNG</Text>
+                        </ImageBackground>
+
+                    </TouchableOpacity> 
+                    <TouchableOpacity>
+                    <ImageBackground 
+                            source={{
+                            uri:'https://i.dlpng.com/static/png/273557_preview.png'}} 
+                            style={styles.buttonFooter}>
+                            <Text style={styles.textFooter}>MUA NGAY</Text>
+                        </ImageBackground>
+                    </TouchableOpacity>
+                </View>
         </ScrollView>
     );
 }
@@ -172,4 +192,23 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flex: 1
     },
+    footer: {
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        alignItems: 'stretch',
+        borderTopColor :'black'
+    },
+    buttonFooter: {
+        width: 200, 
+        height: 50,
+        maxWidth :200,
+        justifyContent:'center',
+        alignItems:'center',
+    
+    },
+    textFooter: {
+        color: 'white',
+        fontSize: 15,
+        fontWeight: 'bold'
+    }
 })

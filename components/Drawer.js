@@ -37,12 +37,12 @@ export default class Drawer extends React.Component {
                             name="newspaper-o" size={21} />
                         <Text style={styles.newsText}>NEWS</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.contactButton}>
+                    <TouchableOpacity style={styles.contactButton} onPress={this.navigateToScreen('ContactUs')}>
                         <AntDesign
                             name="contacts" size={24} />
                         <Text style={styles.contactText}>CONTACT US</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.aboutUsButton}>
+                    <TouchableOpacity style={styles.aboutUsButton} onPress={this.navigateToScreen('AboutUs')}>
                         <AntDesign
                             name="questioncircleo" size={25} />
                         <Text style={styles.aboutUsText}>ABOUT US</Text>
